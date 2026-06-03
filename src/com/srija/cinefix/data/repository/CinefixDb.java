@@ -86,17 +86,7 @@ public class CinefixDb {
         return booked;
     }
 
-//    public static List<ViewerBooking> getCustomerBook() {
-//        List<ViewerBooking> list=new ArrayList<>();
-//        for(Booking book:booked){
-//            ViewerBooking vb =new ViewerBooking(book.getTheater_name(),
-//                    book.getMovie_name(),
-//                    book.getScreen_no(),
-//                    book.getBooked());
-//            list.add(vb);
-//        }
-//        return list;
-//    }
+
     // get particular booking
     public
     List<ViewerBooking> getCustomerBook(int id) {
