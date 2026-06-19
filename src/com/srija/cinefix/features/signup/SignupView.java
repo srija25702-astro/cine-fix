@@ -15,9 +15,6 @@ public class SignupView {
 
          SignupModel s = new SignupModel();
          SigninView siv = new SigninView();
-         Scanner sc = new Scanner(System.in);
-
-
 
          while(true) {
              String ans = null;
@@ -93,7 +90,7 @@ public class SignupView {
                      if (userCheck && passwordcheck && emailCheck) {
                          Viewer v = new Viewer(user, email, password);
 
-                         boolean exist = CinefixDb.isExist(v);
+                         boolean exist = s.isExist(v);
                          if (exist) {
                              s.addViewer(v);
                              System.out.println("Signup successfull.........");
@@ -111,11 +108,6 @@ public class SignupView {
                  System.out.println("Thank you for using cinefix");
                  break;
              }
-//             value=asIn;
-//             mmv.init(value);
          }
-         //mmv.init(value);
-
-
      }
 }

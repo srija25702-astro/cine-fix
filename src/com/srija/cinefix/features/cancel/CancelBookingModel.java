@@ -72,7 +72,5 @@ class CancelBookingModel {
 
         db.getBooked().remove(booking);
 }
-//  public void bookedDetails(List<ViewerBooking> list,int user_id){
-//
-//  }
+
 }

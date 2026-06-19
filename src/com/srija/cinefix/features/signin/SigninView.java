@@ -30,7 +30,7 @@ public class SigninView {
 
 
             result=model.signIn(request);
-            //System.out.println(result);
+
 
             if(result.equals("customer")){
                 System.out.println("Login successfull..........");

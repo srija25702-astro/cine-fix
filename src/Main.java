@@ -15,28 +15,5 @@ void main() {
     System.out.println("======================================================");
 
     suv.create();
-
-
-//    while(true){
-//        if(asIn.equals("supervisor")){
-//            System.out.println("1)Add book \n 2)Booking");
-//            String choice=sc.nextLine();
-//            if(choice.equals("1")){
-//                boolean isadd=tdv.addTheaterView();
-//                if (isadd) break;
-//
-//            }
-//            else if(choice.equals("2")){
-//                bv.booking();
-//                 break;
-//            }
-//            else{
-//                System.out.println("Enter 1 or 2 ");
-//            }
-//        }
-//    }
-
-
-
   }
 

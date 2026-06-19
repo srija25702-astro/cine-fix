@@ -11,7 +11,7 @@ public class MainMenuView {
 
         if(value.equals("supervisor")){
               mmm.adminOption();
-              suv.create();
+              //Admin session ends here -no redirect to sign up screen
 
         }
         else if(value.equals("customer")){

@@ -11,19 +11,5 @@ class SeatModel {
 
 
 
-//    public int seatDisplay(String tName,String mName,int screenNo){
-//
-//        List<MovieSlot> movieSlot = db.getMovieSlot();
-//        for(MovieSlot ms:movieSlot){
-//            if(ms.getTheater().getTheater_name().
-//                    equals(tName) &&
-//                      ms.getMovie().getMovie_name().
-//                              equals(mName)
-//                    && ms.getScreen().getScreenNo()== screenNo
-//                    ){
-//                return ms.getScreen().getSeatList().size();
-//            }
-//        }
-//        return 0;
-//    }
+
 }

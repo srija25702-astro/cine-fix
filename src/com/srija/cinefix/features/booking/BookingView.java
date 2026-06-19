@@ -86,9 +86,8 @@ public class BookingView{
         bm.bookSeat(ms, seatNo);
     }
         Viewer v = db.getCurrentViewer();
-    Booking booking = new Booking(
+        Booking booking = new Booking(
             v.getUser_id(),
-
             theaterName,
             movieName,
             showTime,

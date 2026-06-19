@@ -7,25 +7,30 @@ class SignupModel {
     CinefixDb db=CinefixDb.getInstance();
 
     public String validateUserName(String user){
+        if(user == null || user.isEmpty()) {
+            return "The user name cannot be empty.....";
+        }
         user = user.trim();
-      if(user == null || user.isEmpty()) {
-          return "The user name cannot be empty.....";
-
-      }
-      if(user.length()<8){
-          return "Enter username with 8 characters........";
-      }
-      return "";
+        if(user.isEmpty()) {
+            return "The user name cannot be empty.....";
+        }
+        if(user.length()<8){
+            return "Enter username with 8 characters........";
+        }
+        return "";
     }
 
     public String validateEmail(String email){
         email = email.trim();
-        if(email== null || email.isEmpty()){
+        if(email == null || email.isEmpty()){
             return "The email cannot be empty...........";
         }
-        if(!email.contains("@") || !email.endsWith("gmail.com")){
-
-            return "Enter the valid email id........";
+        if(!email.contains("@") || !email.contains(".")){
+            return "Enter a valid email address........";
+        }
+        int atIndex = email.indexOf("@");
+        if(atIndex == 0 || atIndex == email.length() - 1){
+            return "Enter a valid email address........";
         }
         return "";
     }
@@ -55,5 +60,7 @@ class SignupModel {
     public void addViewer(Viewer v){
         db.addViewer(v);
     }
-
+    public boolean isExist(Viewer v){
+        return db.isExist();
+    }
 }
