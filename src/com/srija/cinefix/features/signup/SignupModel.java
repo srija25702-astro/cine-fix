@@ -61,6 +61,6 @@ class SignupModel {
         db.addViewer(v);
     }
     public boolean isExist(Viewer v){
-        return db.isExist();
+        return db.isExist(v);
     }
 }
