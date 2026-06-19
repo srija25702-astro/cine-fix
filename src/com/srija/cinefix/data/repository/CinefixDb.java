@@ -98,25 +98,17 @@ public class CinefixDb {
     }
 
     //viewer exist
+
     public boolean isExist(Viewer v){
-
+        if(v.getUserName().equalsIgnoreCase(admin.getUserName())){
+            return true;
+        }
         for(Viewer viewer : viewers){
-            if(viewer.getUserName().
-                    equals(v.getUserName())
-                    &&
-                    viewer.getPassword().
-                            equals(v.getPassword())
-                    &&
-                    viewer.getUserName().
-                            equals(admin.getUserName())
-                    &&
-                    viewer.getPassword().
-                            equals(admin.getPassword())){
-
-                return false;
+            if(viewer.getUserName().equalsIgnoreCase(v.getUserName())){
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     //thearter exist

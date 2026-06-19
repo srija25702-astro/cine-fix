@@ -37,21 +37,17 @@ public class TheaterDetailsView {
 
          for(int i = 1; i <= noScreen; i++) {
              System.out.print("Enter the screen number ( 1 or 2):");
-             int screenNo=sc.nextInt();
+             int screenNo = sc.nextInt();
 
              System.out.print("Enter the seat capacity: ");
-             int seatCapacity=sc.nextInt();
+             int seatCapacity = sc.nextInt();
              sc.nextLine();
 
              List<Seat> seats = new ArrayList<>();
-
-             for(int j = 1; j <= noScreen; j++) {
-                 for(int k=1 ;k<=seatCapacity;k++){
-                     seats.add(new Seat(k));
-                 }
-
+             for(int k = 1; k <= seatCapacity; k++){
+                 seats.add(new Seat(k));
              }
-             screens.add(new Screen(screenNo,seats));
+             screens.add(new Screen(screenNo, seats));
          }
 
          boolean flag = tdm.addTheater(theaterName,theaterLocation,screens);

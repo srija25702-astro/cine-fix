@@ -91,13 +91,12 @@ public class SignupView {
                          Viewer v = new Viewer(user, email, password);
 
                          boolean exist = s.isExist(v);
-                         if (exist) {
+                         if (!exist) {
                              s.addViewer(v);
                              System.out.println("Signup successfull.........");
                              break;
                          } else {
-                             System.out.println("Account alreadyexist.........");
-
+                             System.out.println("Account already exists.........");
                          }
                      }
                  }
