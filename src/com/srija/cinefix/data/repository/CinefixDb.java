@@ -176,20 +176,21 @@ public class CinefixDb {
     public boolean isValidSlot(MovieSlot s){
         List<MovieSlot> movieSlots = getMovieSlot();
 
-        for(MovieSlot ms:movieSlots){
-            boolean flag=meanTime(s,ms);
-            if(ms.getTheater().getTheater_name().toLowerCase().
-                    equals(s.getTheater().getTheater_name().toLowerCase())
-                    &&
-                    ms.getScreen().getScreenNo() ==
-                            s.getScreen().getScreenNo()
-                    &&
-                    flag){
-                 return false;
+
+
+        for(MovieSlot ms : movieSlots){
+            boolean sameTheater = ms.getTheater().getTheater_name().toLowerCase()
+                            .equals(s.getTheater().getTheater_name().toLowerCase());
+            boolean sameScreen = ms.getScreen().getScreenNo() == s.getScreen().getScreenNo();
+
+            if(sameTheater && sameScreen && overlaps(s, ms)){
+                return false;
             }
         }
         return true;
     }
+
+
     // Returns true if slot s and slot m overlap in time (bidirectional check)
     private static boolean overlaps(MovieSlot s, MovieSlot m){
         LocalTime mStart = LocalTime.parse(m.getShowTime());
