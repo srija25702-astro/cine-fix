@@ -8,73 +8,57 @@ import com.srija.cinefix.data.repository.CinefixDb;
 import java.util.List;
 
 class BookingModel{
-    CinefixDb db =
-            CinefixDb.getInstance();
-    public MovieSlot getMovieSlot(String theaterName,String mName,String showTime,int screenNo){
+    CinefixDb db = CinefixDb.getInstance();
+
+    public MovieSlot getMovieSlot(String theaterName, String mName, String showTime, int screenNo){
 
         List<MovieSlot> movieSlots = db.getMovieSlot();
 
         for(MovieSlot ms : movieSlots){
+            if(ms.getTheater().getTheater_name().equalsIgnoreCase(theaterName)
+                    && ms.getMovie().getMovie_name().equalsIgnoreCase(mName)
+                    && ms.getShowTime().equals(showTime)
+                    && ms.getScreen().getScreenNo() == screenNo){
 
-        if(ms.getTheater().getTheater_name()
-                .equalsIgnoreCase(theaterName)
-                &&
-                ms.getMovie().getMovie_name()
-                        .equalsIgnoreCase(mName)
-                &&
-                ms.getShowTime()
-                        .equals(showTime)
-                &&
-                ms.getScreen().getScreenNo() == screenNo){
-
-            return ms;
+                return ms;
+            }
         }
-    }
         return null;
-}
+    }
 
-public boolean isSeatAvailable(MovieSlot ms,
-                               int seatNo){
+    public boolean isSeatAvailable(MovieSlot ms, int seatNo){
 
-    List<Seat> seats = ms.getScreen().getSeatList();
+        List<Seat> seats = ms.getScreen().getSeatList();
 
-    for(Seat seat : seats){
+        for(Seat seat : seats){
+            if(seat.getSeatNo() == seatNo){
+                return !seat.isBooked();
+            }
+        }
+        return false;
+    }
 
-        if(seat.getSeatNo() == seatNo){
+    public void bookSeat(MovieSlot ms, int seatNo){
 
-            return !seat.isBooked();
+        List<Seat> seats = ms.getScreen().getSeatList();
+
+        for(Seat seat : seats){
+            if(seat.getSeatNo() == seatNo){
+                seat.setBooked(true);
+            }
         }
     }
 
-    return false;
-}
-
-public void bookSeat(MovieSlot ms,
-                     int seatNo){
-
-    List<Seat> seats = ms.getScreen().getSeatList();
-
-    for(Seat seat : seats){
-
-        if(seat.getSeatNo() == seatNo){
-
-            seat.setBooked(true);
-        }
+    public void addBooking(Booking booking){
+        db.addBooking(booking);
     }
-}
-
-public void addBooking(Booking booking){
-    db.addBooking(booking);
-  }
 
     public boolean isthere(MovieSlot ms, int seatNo) {
         List<Seat> seats = ms.getScreen().getSeatList();
 
-        if(seatNo>seats.size()){
+        if(seatNo <= 0 || seatNo > seats.size()){
             return false;
         }
         return true;
     }
 }
-
-
